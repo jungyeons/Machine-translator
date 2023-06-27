@@ -1,0 +1,44 @@
+.header
+kor 01
+eng 02
+sum 03
+average 16
+MAR 22
+MBR 26
+AC1 31
+AC2 34
+callback 57
+student 80
+data 0
+.code
+start:
+    movra MAR @student
+    jump callback
+callback:
+    push
+    movra MAR @kor
+    movrc MBR 60
+    sto
+    movra MAR @eng
+    movrc MBR 70
+    sto
+    movra MAR @kor
+    lda
+    movrr AC1 MBR
+    movra MAR @eng
+    lda
+    add AC1 MBR
+    movra MAR @sum
+    sto
+    movrc AC2 2
+    div AC1 AC2
+    movrr MBR AC1
+    movra MAR @average
+    sto
+    movra MAR @average
+    lda
+    out
+    pop
+    halt
+student:
+    .end
